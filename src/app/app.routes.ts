@@ -1,7 +1,19 @@
 import { Routes } from '@angular/router';
-import { HomePage } from './pages/home/home.page';
+import { AppShellComponent } from './layout/app-shell.component';
 
 export const routes: Routes = [
-    { path: '', component: HomePage },
-    { path: 'parts/:type', loadComponent: () => import('./pages/part-list/part-list.page').then(m => m.PartListPage) },
+    { 
+        path: '',
+        component: AppShellComponent,
+        children: [
+            {
+                path: '',
+                loadComponent: () => import('./pages/home/home.page').then(m => m.HomePage)
+            },
+            {
+                path: 'parts/:type',
+                loadComponent: () => import('./pages/part-list/part-list.page').then(m => m.PartListPage)
+            }
+        ]
+    }
 ];

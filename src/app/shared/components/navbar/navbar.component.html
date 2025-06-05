@@ -1,1 +1,12 @@
-<p>navbar works!</p>
+<nav class="bg-gray-900 text-white px-6 py-4 flex items-center justify-between">
+  <div class="text-xl font-bold">
+    <a routerLink="/" class="hover:text-blue-400">PCBuilder</a>
+  </div>
+
+  <ul class="flex gap-6 text-sm font-medium">
+    <li><a routerLink="/" routerLinkActive="text-blue-400">Home</a></li>
+    <li><a routerLink="/parts/cpu" routerLinkActive="text-blue-400">Parts</a></li>
+    <li><a routerLink="/build" routerLinkActive="text-blue-400">Build</a></li>
+    <li><a routerLink="/about" routerLinkActive="text-blue-400">About</a></li>
+  </ul>
+</nav>
