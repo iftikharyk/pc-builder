@@ -1,1 +1,6 @@
-<p>part-card works!</p>
+<div class="bg-white rounded-xl shadow p-4 hover:shadow-md transition">
+  <img [src]="part.image" alt="{{ part.name }}" class="w-full h-32 object-cover rounded mb-3" />
+  <h2 class="text-lg font-semibold mb-1">{{ part.name }}</h2>
+  <p class="text-gray-600 text-sm">{{ part.specs }}</p>
+  <p class="text-blue-600 font-bold mt-2">$ {{ part.price }}</p>
+</div>
