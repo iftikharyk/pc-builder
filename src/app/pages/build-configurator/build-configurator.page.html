@@ -1,0 +1,47 @@
+<div class="p-6 max-w-4xl mx-auto">
+    <h1 class="text-2xl font-bold mb-4">Build Your PC</h1>
+
+    <!-- Compatibility Warning -->
+    <div *ngIf="compatibilityWarning" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        ⚠️ {{ compatibilityWarning }}
+    </div>
+
+    <!-- Sorting Controls -->
+    <div class="mb-6 flex gap-4 items-center">
+        <label class="font-semibold text-sm">Sort Parts:</label>
+        <select [(ngModel)]="sortOption" class="border rounded px-2 py-1 text-sm">
+            <option value="priceAsc">Price: Low to High</option>
+            <option value="priceDesc">Price: High to Low</option>
+            <option value="nameAsc">Name: A-Z</option>
+            <option value="nameDesc">Name: Z-A</option>
+        </select>
+    </div>
+
+    <!-- Part Selectors -->
+    <div *ngFor="let type of objectKeys(partsByType)" class="mb-6">
+        <h2 class="text-lg font-semibold capitalize mb-2">{{ type }}</h2>
+        <select class="w-full border p-2 rounded"
+            (change)="onPartChange(type, $event)"
+            [value]="selected[type]?.id || ''">
+            <option value="">-- Select {{ type }} --</option>
+            <option *ngFor="let part of getFilteredAndSortedParts(type)" [value]="part.id">
+                {{ part.name }} - ${{ part.price }}
+            </option>
+        </select>
+    </div>
+
+    <!-- Selected Parts Display -->
+    <div class="mt-10">
+        <h2 class="text-xl font-bold mb-4">Selected Parts</h2>
+        <ul class="space-y-2">
+            <li *ngFor="let part of selectedParts()">
+                ✅ {{ part.name }} - ${{ part.price }}
+            </li>
+        </ul>
+    </div>
+
+    <!-- Total Price -->
+    <div class="mt-6 text-lg font-bold">
+        💵 Total Price: ${{ getTotalPrice() }}
+    </div>
+</div>

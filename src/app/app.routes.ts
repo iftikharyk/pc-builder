@@ -13,6 +13,10 @@ export const routes: Routes = [
             {
                 path: 'parts/:type',
                 loadComponent: () => import('./pages/part-list/part-list.page').then(m => m.PartListPage)
+            },
+            { 
+                path: 'build', 
+                loadComponent: () => import('./pages/build-configurator/build-configurator.page').then(m => m.BuildConfiguratorPage) 
             }
         ]
     }
